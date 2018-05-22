@@ -26,6 +26,7 @@ namespace kuru
         void initialize();
         void update(float elapsedTime);
         void render(float elapsedTime);
+        Node* addNodeWithModel(Model *model);
         
     private:
         Scene* mInternalScene;

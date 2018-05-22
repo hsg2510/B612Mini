@@ -261,20 +261,27 @@ Texture::Sampler* MaterialParameter::setValue(const char* texturePath, bool gene
     return sampler;
 }
     
-//Texture::Sampler* MaterialParameter::setValue(const char* imageData, bool generateMipmaps)
-//{
-//    GP_ASSERT(texturePath);
-//    clearValue();
-//
-//    Texture::create(RGBA, unsigned int width, unsigned int height, const unsigned char* data, bool generateMipmaps = false, Type type = TEXTURE_2D);
-//    Texture::Sampler* sampler = Texture::Sampler::create(texturePath, generateMipmaps);
-//    if (sampler)
-//    {
-//        _value.samplerValue = sampler;
-//        _type = MaterialParameter::SAMPLER;
-//    }
-//    return sampler;
-//}
+Texture::Sampler* MaterialParameter::setValue(GLuint textureHandle, bool generateMipmaps, int width, int height)
+{
+    clearValue();
+
+    Texture* texture = Texture::create(textureHandle, width, height);
+    
+    if (generateMipmaps)
+    {
+        texture->generateMipmaps();
+    }
+    
+    Texture::Sampler* sampler = Texture::Sampler::create(texture);
+    
+    if (sampler)
+    {
+        _value.samplerValue = sampler;
+        _type = MaterialParameter::SAMPLER;
+    }
+    
+    return sampler;
+}
 
 void MaterialParameter::setFloat(float value)
 {

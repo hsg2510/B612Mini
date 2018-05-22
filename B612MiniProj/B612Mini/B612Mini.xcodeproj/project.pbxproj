@@ -13,6 +13,8 @@
 		4D0C81AE20A1CBE1001E6BB7 /* SKCustomRenderingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0C81AD20A1CBE1001E6BB7 /* SKCustomRenderingViewController.m */; };
 		4D0C81B020A1CD26001E6BB7 /* simple.vert in Resources */ = {isa = PBXBuildFile; fileRef = 4D0C81AF20A1CD26001E6BB7 /* simple.vert */; };
 		4D0C81B220A1CD33001E6BB7 /* simple.frag in Resources */ = {isa = PBXBuildFile; fileRef = 4D0C81B120A1CD33001E6BB7 /* simple.frag */; };
+		4D19BDF920B43621007E1148 /* Shader2.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 4D19BDF720B43621007E1148 /* Shader2.vsh */; };
+		4D19BDFA20B43621007E1148 /* Shader2.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 4D19BDF820B43621007E1148 /* Shader2.fsh */; };
 		4D22558A20A06FDF007CCDFE /* SKRenderingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D22558920A06FDF007CCDFE /* SKRenderingViewController.m */; };
 		4D334EF020A710760004E072 /* CustomKuruScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D334EEE20A710760004E072 /* CustomKuruScene.cpp */; };
 		4D415250203D180B00F771F5 /* KuruScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D41524E203D180B00F771F5 /* KuruScene.cpp */; };
@@ -362,6 +364,8 @@
 		4D0C81AD20A1CBE1001E6BB7 /* SKCustomRenderingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKCustomRenderingViewController.m; sourceTree = "<group>"; };
 		4D0C81AF20A1CD26001E6BB7 /* simple.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = simple.vert; sourceTree = "<group>"; };
 		4D0C81B120A1CD33001E6BB7 /* simple.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = simple.frag; sourceTree = "<group>"; };
+		4D19BDF720B43621007E1148 /* Shader2.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader2.vsh; sourceTree = "<group>"; };
+		4D19BDF820B43621007E1148 /* Shader2.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader2.fsh; sourceTree = "<group>"; };
 		4D22558820A06FDF007CCDFE /* SKRenderingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKRenderingViewController.h; sourceTree = "<group>"; };
 		4D22558920A06FDF007CCDFE /* SKRenderingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKRenderingViewController.m; sourceTree = "<group>"; };
 		4D334EEE20A710760004E072 /* CustomKuruScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CustomKuruScene.cpp; sourceTree = "<group>"; };
@@ -1126,6 +1130,8 @@
 		4D707CFC202F3536001805DC /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				4D19BDF820B43621007E1148 /* Shader2.fsh */,
+				4D19BDF720B43621007E1148 /* Shader2.vsh */,
 				4D49A28C2099E53900D58530 /* Shader.fsh */,
 				4D49A28D2099E53900D58530 /* Shader.vsh */,
 				4D707CFD202F3536001805DC /* colored.frag */,
@@ -1851,6 +1857,7 @@
 				4D707F3C202F3537001805DC /* font.frag in Resources */,
 				4D70800D202F3538001805DC /* MathUtilNeon.inl in Resources */,
 				4D707F4A202F3537001805DC /* default.theme in Resources */,
+				4D19BDFA20B43621007E1148 /* Shader2.fsh in Resources */,
 				4D707F7B202F3538001805DC /* Image.inl in Resources */,
 				4D708044202F3538001805DC /* ScriptController.inl in Resources */,
 				4D707F38202F3537001805DC /* logo_white.png in Resources */,
@@ -1871,6 +1878,7 @@
 				4D70802A202F3538001805DC /* PhysicsSpringConstraint.inl in Resources */,
 				4D707F71202F3537001805DC /* Game.inl in Resources */,
 				4D707F2C202F3537001805DC /* arial.ttf in Resources */,
+				4D19BDF920B43621007E1148 /* Shader2.vsh in Resources */,
 				4D707F31202F3537001805DC /* icon_64.ico in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

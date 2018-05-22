@@ -84,6 +84,16 @@ void CustomRenderingEngine::initKuruScene()
 }
 
 
+Node* CustomRenderingEngine::addQuadModelAndNode(float x, float y, float width, float height, float s1, float t1, float s2, float t2)
+{
+    Mesh* mesh = Mesh::createQuad(x, y, width, height, s1, t1, s2, t2);
+    Node* node = addQuadModelAndNode(mesh);
+    SAFE_RELEASE(mesh);
+    
+    return node;
+}
+
+
 bool CustomRenderingEngine::attachColorAndDepthBuffer()
 {
     GL_ASSERT( glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, mColorRenderbuffer) );
@@ -161,3 +171,15 @@ void CustomRenderingEngine::bindColorRenderbuffer()
     GL_ASSERT( glBindRenderbuffer(GL_RENDERBUFFER, mColorRenderbuffer) );
 }
 
+
+#pragma mark - private
+
+
+Node* CustomRenderingEngine::addQuadModelAndNode(Mesh* mesh)
+{
+    Model* model = Model::create(mesh);
+    Node* node = mKuruScene->addNodeWithModel(model);
+    SAFE_RELEASE(model);
+    
+    return node;
+}

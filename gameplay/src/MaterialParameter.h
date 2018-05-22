@@ -141,7 +141,16 @@ public:
      * @return The texture sampler that was set for this material parameter.
      */
     Texture::Sampler* setValue(const char* texturePath, bool generateMipmaps);
-
+    
+    /**
+     * Loads a texture sampler from the specified path and sets it as the value of this parameter.
+     *
+     * @param textureHandle The handle of texture
+     * @param generateMipmaps True to generate a full mipmap chain for the texture, false otherwise.
+     *
+     * @return The texture sampler that was set for this material parameter.
+     */
+    Texture::Sampler* setValue(GLuint textureHandle, bool generateMipmaps, int width, int height);
     /**
      * Stores a float value in this parameter.
      *

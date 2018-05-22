@@ -7,21 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-//#import <AVFoundation/AVFoundation.h>
+#import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
 #include <OpenGLES/ES2/gl.h>
 #include <OpenGLES/ES2/glext.h>
 
 
-//@interface SKCustomAppEngine : NSObject <AVCaptureVideoDataOutputSampleBufferDelegate>
-@interface SKCustomAppEngine : NSObject
+@interface SKCustomAppEngine : NSObject <AVCaptureVideoDataOutputSampleBufferDelegate>
 
 
 @property (nonatomic, readonly) EAGLContext *context;
 @property (nonatomic, readonly) BOOL isStarted;
 
-
-//@property (nonatomic, readonly) BOOL isStartedCamera;
 
 + (id)sharedAppEngine;
 - (void)initWithContext:(EAGLContext *)aEAGLContext EAGLLayer:(CAEAGLLayer *)aLayer;

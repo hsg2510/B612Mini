@@ -32,6 +32,7 @@ namespace kuru
         void applyViewport();
         void bindFramebuffer();
         void bindColorRenderbuffer();
+        Node* addQuadModelAndNode(float x, float y, float width, float height, float s1 = 0.0f, float t1 = 0.0f, float s2 = 1.0f, float t2 = 1.0f);
         
     protected:
         /**
@@ -63,6 +64,8 @@ namespace kuru
         GLint mFramebufferHeight;
         
         CustomKuruScene *mKuruScene;
+        
+        Node* addQuadModelAndNode(Mesh* mesh);
     };
 }
 
