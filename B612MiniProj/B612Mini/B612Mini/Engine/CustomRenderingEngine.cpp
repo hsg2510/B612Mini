@@ -93,6 +93,15 @@ Node* CustomRenderingEngine::addQuadModelAndNode(float x, float y, float width, 
     return node;
 }
 
+Node* CustomRenderingEngine::addCameraFullScreenQuadModelAndNode()
+{
+    Mesh* mesh = Mesh::createCameraQuadFullscreen();
+    Node* node = addQuadModelAndNode(mesh);
+    SAFE_RELEASE(mesh);
+    
+    return node;
+}
+
 
 bool CustomRenderingEngine::attachColorAndDepthBuffer()
 {

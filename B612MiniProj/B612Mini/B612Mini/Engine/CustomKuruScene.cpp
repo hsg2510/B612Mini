@@ -64,7 +64,8 @@ namespace kuru
         mInternalScene = Scene::create();
         std::cout<< Game::getInstance()->getAspectRatio() << std::endl;
         
-        Camera *sCamera = Camera::createPerspective(45.0, Game::getInstance()->getAspectRatio(), 1, 1000);
+//        Camera *sCamera = Camera::createPerspective(45.0, Game::getInstance()->getAspectRatio(), 1, 1000);
+        Camera *sCamera = Camera::createPerspective(Camera::DEFAULT_FIELD_OF_VIEW, 1);
         Node *sCameraNode = mInternalScene->addNode("camera");
         
         sCameraNode->setCamera(sCamera);

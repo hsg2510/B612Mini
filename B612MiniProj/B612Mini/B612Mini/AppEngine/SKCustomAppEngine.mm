@@ -124,8 +124,8 @@ using namespace std;
         CustomRenderingEngine::getInstance()->initKuruScene();
         
         [self addCameraTextureNode];
-        [self addTestTextureNode];
-        [self addTestTextureNode2];
+//        [self addTestTextureNode];
+//        [self addTestTextureNode2];
         
         return;
     }
@@ -168,7 +168,7 @@ using namespace std;
 
 - (void)addCameraTextureNode
 {
-    Node *sNode = CustomRenderingEngine::getInstance()->addQuadModelAndNode(-10.0, -10.0, 20.0, 20.0);
+    Node *sNode = CustomRenderingEngine::getInstance()->addCameraFullScreenQuadModelAndNode();
     [self setTextureUnlitMaterial:dynamic_cast<Model*>(sNode->getDrawable()) generateMipmaps:NO];
 }
 

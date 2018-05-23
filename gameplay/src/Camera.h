@@ -21,7 +21,11 @@ class Camera : public Ref, public Transform::Listener
     friend class Node;
 
 public:
-
+    
+    static const float DEFAULT_FIELD_OF_VIEW;
+    static const float DEFAULT_NEAR_PLANE;
+    static const float DEFAULT_FAR_PLANE;
+    
     /**
      * The type of camera.
      */
@@ -58,7 +62,7 @@ public:
      *
      * @return The new Camera.
      */
-    static Camera* createPerspective(float fieldOfView, float aspectRatio, float nearPlane, float farPlane);
+    static Camera* createPerspective(float fieldOfView, float aspectRatio, float nearPlane = DEFAULT_NEAR_PLANE, float farPlane = DEFAULT_FAR_PLANE);
 
     /**
      * Creates an orthographic camera.

@@ -8,6 +8,7 @@
 
 #include "KuruScene.hpp"
 #include "RenderingEngine.hpp"
+#include "Camera.h"
 
 using namespace kuru;
 using namespace gameplay;
@@ -110,7 +111,7 @@ void KuruScene::init()
     mInternalScene = Scene::create();
     
 //    Camera *sCamera = Camera::createPerspective(45.0, mAspectRatio, 1.0, 1000.0);
-    Camera *sCamera = Camera::createPerspective(45.0, 16.0/9.0, 1.0, 1000.0);
+    Camera *sCamera = Camera::createPerspective(Camera::DEFAULT_FIELD_OF_VIEW, 1);
     Node *sCameraNode = mInternalScene->addNode("camera");
     
     sCameraNode->setCamera(sCamera);

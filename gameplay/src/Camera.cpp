@@ -20,6 +20,10 @@
 namespace gameplay
 {
 
+const float Camera::DEFAULT_FIELD_OF_VIEW = 45.f;
+const float Camera::DEFAULT_NEAR_PLANE = 0.1f;
+const float Camera::DEFAULT_FAR_PLANE = 10000.f;
+    
 Camera::Camera(float fieldOfView, float aspectRatio, float nearPlane, float farPlane)
     : _type(PERSPECTIVE), _fieldOfView(fieldOfView), _aspectRatio(aspectRatio), _nearPlane(nearPlane), _farPlane(farPlane),
     _bits(CAMERA_DIRTY_ALL), _node(NULL), _listeners(NULL)

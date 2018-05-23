@@ -106,6 +106,20 @@ public:
      * @script{create}
      */
     static Mesh* createQuadFullscreen();
+    
+    /**
+     * Creates a new camera full-screen 2D quad.
+     *
+     * The returned mesh's vertex format includes a 2-element (x,y) position
+     * and a 2-element texture coordinate.
+     *
+     * This method returns a mesh describing a camera fullscreen quad using
+     * normalized device coordinates for vertex positions.
+     *
+     * @return The newly created mesh.
+     * @script{create}
+     */
+    static Mesh* createCameraQuadFullscreen();
 
     /**
      * Creates lines between 2 or more points passed in as a Vector3 array.

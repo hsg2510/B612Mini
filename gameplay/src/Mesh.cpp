@@ -112,6 +112,39 @@ Mesh* Mesh::createQuadFullscreen()
 
     return mesh;
 }
+    
+Mesh* Mesh::createCameraQuadFullscreen()
+{
+    float x = -1.0f;
+    float y = -1.0f;
+    float x2 = 1.0f;
+    float y2 = 1.0f;
+    
+    float vertices[] =
+    {
+        x, y2,   0, 0,
+        x, y,    1, 0,
+        x2, y2,  0, 1,
+        x2, y,   1, 1
+    };
+    
+    VertexFormat::Element elements[] =
+    {
+        VertexFormat::Element(VertexFormat::POSITION, 2),
+        VertexFormat::Element(VertexFormat::TEXCOORD0, 2)
+    };
+    Mesh* mesh = Mesh::createMesh(VertexFormat(elements, 2), 4, false);
+    if (mesh == NULL)
+    {
+        GP_ERROR("Failed to create mesh.");
+        return NULL;
+    }
+    
+    mesh->_primitiveType = TRIANGLE_STRIP;
+    mesh->setVertexData(vertices, 0, 4);
+    
+    return mesh;
+}
 
 Mesh* Mesh::createQuad(const Vector3& p1, const Vector3& p2, const Vector3& p3, const Vector3& p4)
 {

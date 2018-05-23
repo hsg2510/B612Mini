@@ -33,7 +33,7 @@ namespace kuru
         void bindFramebuffer();
         void bindColorRenderbuffer();
         Node* addQuadModelAndNode(float x, float y, float width, float height, float s1 = 0.0f, float t1 = 0.0f, float s2 = 1.0f, float t2 = 1.0f);
-        
+        Node* addCameraFullScreenQuadModelAndNode();
     protected:
         /**
          * @see Game::initialize
