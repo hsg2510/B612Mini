@@ -39,6 +39,8 @@ using namespace std;
     
     int mTextureWidth;
     int mTextureHeight;
+    
+    dispatch_queue_t mVideoDataOutputQueue;
 }
 
 
@@ -87,6 +89,9 @@ using namespace std;
     mIsStartedCamera = NO;
     mLayer = aLayer;
     
+    mVideoDataOutputQueue = dispatch_queue_create( "com.yourcompany.HelloArrow2.video", DISPATCH_QUEUE_SERIAL );
+    dispatch_set_target_queue( mVideoDataOutputQueue, dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0) );
+    
     NSString* bundlePath = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/"];
     FileSystem::setResourcePath([bundlePath fileSystemRepresentation]);
     
@@ -101,7 +106,6 @@ using namespace std;
         return;
     }
     
-    NSLog(@"render");
     [EAGLContext setCurrentContext:mContext];
     
     if (mUpdateFrameBuffer)
@@ -199,7 +203,6 @@ using namespace std;
 - (void)setTextureUnlitMaterial:(Model *)aModel generateMipmaps:(BOOL)aMipmaps
 {
     Material* sMaterial = aModel->setMaterial("Shader2.vsh", "Shader2.fsh");
-    sMaterial->setParameterAutoBinding("u_worldViewProjectionMatrix", "WORLD_VIEW_PROJECTION_MATRIX");
     
     // Load the texture from file.
     Texture::Sampler* sSampler = sMaterial->getParameter("SamplerRGB")->setValue(mCameraTextureHandle, aMipmaps, mTextureWidth, mTextureHeight);
@@ -257,13 +260,9 @@ using namespace std;
     //-- Create the output for the capture session.
     AVCaptureVideoDataOutput * dataOutput = [[AVCaptureVideoDataOutput alloc] init];
     [dataOutput setAlwaysDiscardsLateVideoFrames:YES]; // Probably want to set this to NO when recording
-
-    //-- Set to YUV420.
     [dataOutput setVideoSettings:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_32BGRA]
                                                              forKey:(id)kCVPixelBufferPixelFormatTypeKey]]; // Necessary for manual preview
-
-    // Set dispatch to be on the main thread so OpenGL can do things with the data
-    [dataOutput setSampleBufferDelegate:self queue:dispatch_get_main_queue()];
+    [dataOutput setSampleBufferDelegate:self queue:mVideoDataOutputQueue];
 
     [mSession addOutput:dataOutput];
     [mSession commitConfiguration];
@@ -338,8 +337,10 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         NSLog(@"Error at CVOpenGLESTextureCacheCreateTextureFromImage %d", err);
     }
     
+    glBindTexture(CVOpenGLESTextureGetTarget(mCameraTexture), CVOpenGLESTextureGetName(mCameraTexture));
     mCameraTextureHandle = CVOpenGLESTextureGetName(mCameraTexture);
 }
+
 
 
 - (void)tearDownAVCapture
