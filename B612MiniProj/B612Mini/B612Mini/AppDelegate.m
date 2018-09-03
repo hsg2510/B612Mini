@@ -7,9 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "SKAppEngine.h"
-#import "ViewController.h"
-#import "SKRenderingViewController.h"
 #import "SKCustomRenderingViewController.h"
 
 
@@ -27,7 +24,7 @@
 {
     mWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 //    ViewController *sViewController = [[ViewController alloc] initWithNibName:nil bundle:nil];
-//    SKRenderingViewController *sViewController = [[SKRenderingViewController alloc] initWithNibName:nil bundle:nil];
+//    mViewController = [[SKRenderingViewController alloc] initWithNibName:nil bundle:nil];
     mViewController = [[SKCustomRenderingViewController alloc] initWithNibName:nil bundle:nil];
     
     [mWindow setRootViewController:mViewController];

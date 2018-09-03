@@ -7,7 +7,7 @@
 //
 
 #import "SKRenderingCacheStorage.h"
-#import "SKAppEngine.h"
+//#import "SKAppEngine.h"
 
 
 @implementation SKRenderingCacheStorage
@@ -54,15 +54,15 @@
 
 - (CVOpenGLESTextureCacheRef)coreVideoTextureCacheRef
 {
-    if (mCoreVideoTextureCacheRef == NULL)
-    {
-        CVReturn sErr = CVOpenGLESTextureCacheCreate(kCFAllocatorDefault, NULL, [[SKAppEngine sharedAppEngine] context], NULL, &mCoreVideoTextureCacheRef);
-        
-        if (sErr)
-        {
-            NSAssert(NO, @"Error at CVOpenGLESTextureCacheCreate %d", sErr);
-        }
-    }
+//    if (mCoreVideoTextureCacheRef == NULL)
+//    {
+//        CVReturn sErr = CVOpenGLESTextureCacheCreate(kCFAllocatorDefault, NULL, [[SKAppEngine sharedAppEngine] context], NULL, &mCoreVideoTextureCacheRef);
+//        
+//        if (sErr)
+//        {
+//            NSAssert(NO, @"Error at CVOpenGLESTextureCacheCreate %d", sErr);
+//        }
+//    }
     
     return mCoreVideoTextureCacheRef;
 }

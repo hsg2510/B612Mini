@@ -15,22 +15,17 @@
 		4D0C81B220A1CD33001E6BB7 /* simple.frag in Resources */ = {isa = PBXBuildFile; fileRef = 4D0C81B120A1CD33001E6BB7 /* simple.frag */; };
 		4D19BDF920B43621007E1148 /* Shader2.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 4D19BDF720B43621007E1148 /* Shader2.vsh */; };
 		4D19BDFA20B43621007E1148 /* Shader2.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 4D19BDF820B43621007E1148 /* Shader2.fsh */; };
-		4D22558A20A06FDF007CCDFE /* SKRenderingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D22558920A06FDF007CCDFE /* SKRenderingViewController.m */; };
 		4D334EF020A710760004E072 /* CustomKuruScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D334EEE20A710760004E072 /* CustomKuruScene.cpp */; };
-		4D415250203D180B00F771F5 /* KuruScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D41524E203D180B00F771F5 /* KuruScene.cpp */; };
 		4D415252203DA3DE00F771F5 /* color-wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D415251203DA3DE00F771F5 /* color-wheel.png */; };
 		4D49A2622099DD4A00D58530 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D49A2612099DD4A00D58530 /* GLKit.framework */; };
 		4D49A28E2099E53900D58530 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 4D49A28C2099E53900D58530 /* Shader.fsh */; };
 		4D49A28F2099E53900D58530 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 4D49A28D2099E53900D58530 /* Shader.vsh */; };
 		4D4C0F17202C769100495ECB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C0F16202C769100495ECB /* AppDelegate.m */; };
-		4D4C0F1A202C769100495ECB /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C0F19202C769100495ECB /* ViewController.mm */; };
 		4D4C0F1D202C769100495ECB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D4C0F1B202C769100495ECB /* Main.storyboard */; };
 		4D4C0F1F202C769100495ECB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D4C0F1E202C769100495ECB /* Assets.xcassets */; };
 		4D4C0F22202C769100495ECB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D4C0F20202C769100495ECB /* LaunchScreen.storyboard */; };
 		4D4C0F25202C769100495ECB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C0F24202C769100495ECB /* main.m */; };
 		4D4C0F2F202C769100495ECB /* B612MiniTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C0F2E202C769100495ECB /* B612MiniTests.m */; };
-		4D4C0F3C202C771600495ECB /* SKRenderingView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C0F3B202C771600495ECB /* SKRenderingView.mm */; };
-		4D4C0F40202C7F3100495ECB /* RenderingEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C0F3E202C7F3100495ECB /* RenderingEngine.cpp */; };
 		4D707CD3202F29E0001805DC /* gameplay-deps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D707CD2202F29E0001805DC /* gameplay-deps.a */; };
 		4D707F2C202F3537001805DC /* arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4D707CED202F3536001805DC /* arial.ttf */; };
 		4D707F2D202F3537001805DC /* default-theme.psd in Resources */ = {isa = PBXBuildFile; fileRef = 4D707CEE202F3536001805DC /* default-theme.psd */; };
@@ -335,7 +330,6 @@
 		4D70805B202F3538001805DC /* VerticalLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D707F1B202F3537001805DC /* VerticalLayout.cpp */; settings = {COMPILER_FLAGS = "-w"; }; };
 		4D70805D202F380A001805DC /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D70805C202F380A001805DC /* OpenAL.framework */; };
 		4D70805E202F384E001805DC /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D707CD4202F3134001805DC /* CoreMotion.framework */; };
-		4D8E339A2031BC850094CA84 /* SKAppEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4D8E33992031BC850094CA84 /* SKAppEngine.mm */; };
 		4D8E339D2031C8110094CA84 /* SKQueueDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8E339C2031C8110094CA84 /* SKQueueDispatcher.m */; };
 		4D8E33A12031CE760094CA84 /* SKRenderingCacheStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8E33A02031CE760094CA84 /* SKRenderingCacheStorage.m */; };
 		4DB373D0203ADFD10067D45E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB373CF203ADFD10067D45E /* AVFoundation.framework */; };
@@ -366,12 +360,8 @@
 		4D0C81B120A1CD33001E6BB7 /* simple.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = simple.frag; sourceTree = "<group>"; };
 		4D19BDF720B43621007E1148 /* Shader2.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader2.vsh; sourceTree = "<group>"; };
 		4D19BDF820B43621007E1148 /* Shader2.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader2.fsh; sourceTree = "<group>"; };
-		4D22558820A06FDF007CCDFE /* SKRenderingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKRenderingViewController.h; sourceTree = "<group>"; };
-		4D22558920A06FDF007CCDFE /* SKRenderingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKRenderingViewController.m; sourceTree = "<group>"; };
 		4D334EEE20A710760004E072 /* CustomKuruScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CustomKuruScene.cpp; sourceTree = "<group>"; };
 		4D334EEF20A710760004E072 /* CustomKuruScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CustomKuruScene.hpp; sourceTree = "<group>"; };
-		4D41524E203D180B00F771F5 /* KuruScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KuruScene.cpp; sourceTree = "<group>"; };
-		4D41524F203D180B00F771F5 /* KuruScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = KuruScene.hpp; sourceTree = "<group>"; };
 		4D415251203DA3DE00F771F5 /* color-wheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "color-wheel.png"; sourceTree = "<group>"; };
 		4D49A2612099DD4A00D58530 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		4D49A28C2099E53900D58530 /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.fsh; sourceTree = "<group>"; };
@@ -379,8 +369,6 @@
 		4D4C0F12202C769100495ECB /* B612Mini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = B612Mini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D4C0F15202C769100495ECB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4D4C0F16202C769100495ECB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4D4C0F18202C769100495ECB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4D4C0F19202C769100495ECB /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		4D4C0F1C202C769100495ECB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D4C0F1E202C769100495ECB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D4C0F21202C769100495ECB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -389,10 +377,6 @@
 		4D4C0F2A202C769100495ECB /* B612MiniTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = B612MiniTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D4C0F2E202C769100495ECB /* B612MiniTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = B612MiniTests.m; sourceTree = "<group>"; };
 		4D4C0F30202C769100495ECB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4D4C0F3A202C771600495ECB /* SKRenderingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKRenderingView.h; sourceTree = "<group>"; };
-		4D4C0F3B202C771600495ECB /* SKRenderingView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SKRenderingView.mm; sourceTree = "<group>"; };
-		4D4C0F3E202C7F3100495ECB /* RenderingEngine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RenderingEngine.cpp; sourceTree = "<group>"; usesTabs = 0; };
-		4D4C0F3F202C7F3100495ECB /* RenderingEngine.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RenderingEngine.hpp; sourceTree = "<group>"; };
 		4D707CCD202F03C9001805DC /* libgameplay-deps.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgameplay-deps.a"; path = "../../external-deps/lib/ios/arm/libgameplay-deps.a"; sourceTree = "<group>"; };
 		4D707CD2202F29E0001805DC /* gameplay-deps.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "gameplay-deps.a"; path = "../../external-deps/lib/ios/arm/gameplay-deps.a"; sourceTree = "<group>"; };
 		4D707CD4202F3134001805DC /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -947,8 +931,6 @@
 		4D707F1B202F3537001805DC /* VerticalLayout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VerticalLayout.cpp; sourceTree = "<group>"; };
 		4D707F1C202F3537001805DC /* VerticalLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalLayout.h; sourceTree = "<group>"; };
 		4D70805C202F380A001805DC /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
-		4D8E33982031BC850094CA84 /* SKAppEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKAppEngine.h; sourceTree = "<group>"; };
-		4D8E33992031BC850094CA84 /* SKAppEngine.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SKAppEngine.mm; sourceTree = "<group>"; };
 		4D8E339B2031C8110094CA84 /* SKQueueDispatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKQueueDispatcher.h; sourceTree = "<group>"; };
 		4D8E339C2031C8110094CA84 /* SKQueueDispatcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKQueueDispatcher.m; sourceTree = "<group>"; };
 		4D8E339F2031CE760094CA84 /* SKRenderingCacheStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKRenderingCacheStorage.h; sourceTree = "<group>"; };
@@ -1033,14 +1015,8 @@
 		4D4C0F39202C76D000495ECB /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				4D4C0F18202C769100495ECB /* ViewController.h */,
-				4D4C0F19202C769100495ECB /* ViewController.mm */,
-				4D4C0F3A202C771600495ECB /* SKRenderingView.h */,
-				4D4C0F3B202C771600495ECB /* SKRenderingView.mm */,
 				4D0C81A220A1BE9A001E6BB7 /* SKCustomRenderingView.h */,
 				4D0C81A320A1BE9A001E6BB7 /* SKCustomRenderingView.mm */,
-				4D22558820A06FDF007CCDFE /* SKRenderingViewController.h */,
-				4D22558920A06FDF007CCDFE /* SKRenderingViewController.m */,
 				4D0C81AC20A1CBE1001E6BB7 /* SKCustomRenderingViewController.h */,
 				4D0C81AD20A1CBE1001E6BB7 /* SKCustomRenderingViewController.m */,
 			);
@@ -1050,14 +1026,10 @@
 		4D4C0F3D202C7F1900495ECB /* Engine */ = {
 			isa = PBXGroup;
 			children = (
-				4D4C0F3F202C7F3100495ECB /* RenderingEngine.hpp */,
-				4D4C0F3E202C7F3100495ECB /* RenderingEngine.cpp */,
-				4D41524E203D180B00F771F5 /* KuruScene.cpp */,
-				4D41524F203D180B00F771F5 /* KuruScene.hpp */,
 				4D0C81A920A1C3ED001E6BB7 /* CustomRenderingEngine.hpp */,
 				4D0C81A820A1C3ED001E6BB7 /* CustomRenderingEngine.cpp */,
-				4D334EEE20A710760004E072 /* CustomKuruScene.cpp */,
 				4D334EEF20A710760004E072 /* CustomKuruScene.hpp */,
+				4D334EEE20A710760004E072 /* CustomKuruScene.cpp */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -1726,8 +1698,6 @@
 		4D8E339E2031CE3D0094CA84 /* AppEngine */ = {
 			isa = PBXGroup;
 			children = (
-				4D8E33982031BC850094CA84 /* SKAppEngine.h */,
-				4D8E33992031BC850094CA84 /* SKAppEngine.mm */,
 				4D8E339F2031CE760094CA84 /* SKRenderingCacheStorage.h */,
 				4D8E33A02031CE760094CA84 /* SKRenderingCacheStorage.m */,
 				4D0C81A520A1BEED001E6BB7 /* SKCustomAppEngine.h */,
@@ -1916,7 +1886,6 @@
 				4D707F92202F3538001805DC /* lua_AudioBuffer.cpp in Sources */,
 				4D708024202F3538001805DC /* PhysicsGhostObject.cpp in Sources */,
 				4D707F55202F3537001805DC /* AnimationValue.cpp in Sources */,
-				4D4C0F1A202C769100495ECB /* ViewController.mm in Sources */,
 				4D707FAC202F3538001805DC /* lua_Gesture.cpp in Sources */,
 				4D707F96202F3538001805DC /* lua_BoundingBox.cpp in Sources */,
 				4D707FF8202F3538001805DC /* lua_Theme.cpp in Sources */,
@@ -1960,7 +1929,6 @@
 				4D707F86202F3538001805DC /* lua_AIController.cpp in Sources */,
 				4D707FBE202F3538001805DC /* lua_MeshPart.cpp in Sources */,
 				4D708026202F3538001805DC /* PhysicsRigidBody.cpp in Sources */,
-				4D22558A20A06FDF007CCDFE /* SKRenderingViewController.m in Sources */,
 				4D707FC6202F3538001805DC /* lua_PhysicsCharacter.cpp in Sources */,
 				4D707F57202F3537001805DC /* AudioController.cpp in Sources */,
 				4D707FE4202F3538001805DC /* lua_RenderStateStateBlock.cpp in Sources */,
@@ -1981,7 +1949,6 @@
 				4D708038202F3538001805DC /* RadioButton.cpp in Sources */,
 				4D70801B202F3538001805DC /* PhysicsCollisionObject.cpp in Sources */,
 				4D70801D202F3538001805DC /* PhysicsConstraint.cpp in Sources */,
-				4D4C0F40202C7F3100495ECB /* RenderingEngine.cpp in Sources */,
 				4D707FA0202F3538001805DC /* lua_Curve.cpp in Sources */,
 				4D707FFB202F3538001805DC /* lua_ThemeThemeImage.cpp in Sources */,
 				4D707FD1202F3538001805DC /* lua_PhysicsFixedConstraint.cpp in Sources */,
@@ -2070,7 +2037,6 @@
 				4D707F72202F3537001805DC /* Gamepad.cpp in Sources */,
 				4D4C0F17202C769100495ECB /* AppDelegate.m in Sources */,
 				4D707FE0202F3538001805DC /* lua_Ray.cpp in Sources */,
-				4D8E339A2031BC850094CA84 /* SKAppEngine.mm in Sources */,
 				4D708025202F3538001805DC /* PhysicsHingeConstraint.cpp in Sources */,
 				4D707FEA202F3538001805DC /* lua_ScriptTarget.cpp in Sources */,
 				4D707F94202F3538001805DC /* lua_AudioListener.cpp in Sources */,
@@ -2086,7 +2052,6 @@
 				4D708050202F3538001805DC /* ThemeStyle.cpp in Sources */,
 				4D707FCF202F3538001805DC /* lua_PhysicsControllerHitResult.cpp in Sources */,
 				4D0C81A420A1BE9A001E6BB7 /* SKCustomRenderingView.mm in Sources */,
-				4D415250203D180B00F771F5 /* KuruScene.cpp in Sources */,
 				4D708022202F3538001805DC /* PhysicsGenericConstraint.cpp in Sources */,
 				4D707FA8202F3538001805DC /* lua_FrameBuffer.cpp in Sources */,
 				4D707FD8202F3538001805DC /* lua_PhysicsSpringConstraint.cpp in Sources */,
@@ -2132,7 +2097,6 @@
 				4D707FE6202F3538001805DC /* lua_Scene.cpp in Sources */,
 				4D70805B202F3538001805DC /* VerticalLayout.cpp in Sources */,
 				4D707FB6202F3538001805DC /* lua_Light.cpp in Sources */,
-				4D4C0F3C202C771600495ECB /* SKRenderingView.mm in Sources */,
 				4D707F85202F3538001805DC /* lua_AIAgentListener.cpp in Sources */,
 				4D707FBD202F3538001805DC /* lua_MeshBatch.cpp in Sources */,
 				4D707FA9202F3538001805DC /* lua_Frustum.cpp in Sources */,
@@ -2317,7 +2281,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8C327VU859;
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2349,7 +2313,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8C327VU859;
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

@@ -8,6 +8,7 @@
 
 #import "SKCustomAppEngine.h"
 #import "CustomRenderingEngine.hpp"
+#import "SKQueueDispatcher.h"
 #import "Vector2.h"
 #import "Vector4.h"
 #include <vector>
@@ -41,6 +42,7 @@ using namespace std;
     int mTextureHeight;
     
     dispatch_queue_t mVideoDataOutputQueue;
+    dispatch_semaphore_t mVideoFrameRenderingSemaphore;
 }
 
 
@@ -70,7 +72,7 @@ using namespace std;
 - (void)dealloc
 {
     [self tearDownAVCapture];
-    
+
     if ([EAGLContext currentContext] == mContext)
     {
         [EAGLContext setCurrentContext:nil];
@@ -88,6 +90,7 @@ using namespace std;
     mIsStarted = NO;
     mIsStartedCamera = NO;
     mLayer = aLayer;
+    mVideoFrameRenderingSemaphore = dispatch_semaphore_create(1);
     
     mVideoDataOutputQueue = dispatch_queue_create( "com.yourcompany.HelloArrow2.video", DISPATCH_QUEUE_SERIAL );
     dispatch_set_target_queue( mVideoDataOutputQueue, dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0) );
@@ -101,57 +104,63 @@ using namespace std;
 
 - (void)render
 {
-    if (mIsStarted && CustomRenderingEngine::getInstance()->getState() != Game::State::RUNNING)
-    {
-        return;
-    }
-    
-    [EAGLContext setCurrentContext:mContext];
-    
-    if (mUpdateFrameBuffer)
-    {
-        mUpdateFrameBuffer = NO;
-        
-        CustomRenderingEngine::getInstance()->deleteFramebuffer();
-        CustomRenderingEngine::getInstance()->createFrameAndColorRenderbuffer();
-        
-        [mContext renderbufferStorage:GL_RENDERBUFFER fromDrawable:mLayer];
-        
-        CustomRenderingEngine::getInstance()->attachColorAndDepthBuffer();
-    }
-    
-    if (!mUpdateFrameBuffer && !mIsStarted && mIsStartedCamera)
-    {
-        mIsStarted = YES;
-        
-        CustomRenderingEngine::getInstance()->run();
-        CustomRenderingEngine::getInstance()->initKuruScene();
-        
-        [self addCameraTextureNode];
-//        [self addTestTextureNode];
-//        [self addTestTextureNode2];
-        
-        return;
-    }
-    
-    CustomRenderingEngine::getInstance()->bindFramebuffer();
-    CustomRenderingEngine::getInstance()->applyViewport();
-    CustomRenderingEngine::getInstance()->frame();
-    CustomRenderingEngine::getInstance()->bindColorRenderbuffer();
-    
-    [mContext presentRenderbuffer:GL_RENDERBUFFER];
+    [[SKQueueDispatcher sharedDispatcher] runAsynchronouslyOnGLRenderingQueue:^{
+        if (mIsStarted && CustomRenderingEngine::getInstance()->getState() != Game::State::RUNNING)
+        {
+            return;
+        }
+
+        [EAGLContext setCurrentContext:mContext];
+
+        if (mUpdateFrameBuffer)
+        {
+            mUpdateFrameBuffer = NO;
+            
+            CustomRenderingEngine::getInstance()->deleteFramebuffer();
+            CustomRenderingEngine::getInstance()->createFrameAndColorRenderbuffer();
+            
+            [mContext renderbufferStorage:GL_RENDERBUFFER fromDrawable:mLayer];
+            
+            CustomRenderingEngine::getInstance()->attachColorAndDepthBuffer();
+        }
+
+        if (!mUpdateFrameBuffer && !mIsStarted && mIsStartedCamera)
+        {
+            mIsStarted = YES;
+            
+            CustomRenderingEngine::getInstance()->run();
+            CustomRenderingEngine::getInstance()->initKuruScene();
+            
+            [self addCameraTextureNode];
+        //        [self addTestTextureNode];
+        //        [self addTestTextureNode2];
+            
+            return;
+        }
+
+        CustomRenderingEngine::getInstance()->bindFramebuffer();
+        CustomRenderingEngine::getInstance()->applyViewport();
+        CustomRenderingEngine::getInstance()->frame();
+        CustomRenderingEngine::getInstance()->bindColorRenderbuffer();
+
+        [mContext presentRenderbuffer:GL_RENDERBUFFER];
+    }];
 }
 
 
 - (void)resumeEngine
 {
-    CustomRenderingEngine::getInstance()->resume();
+    [[SKQueueDispatcher sharedDispatcher] runAsynchronouslyOnGLRenderingQueue:^{
+        CustomRenderingEngine::getInstance()->resume();
+    }];
 }
 
 
 - (void)pauseEngine
 {
-    CustomRenderingEngine::getInstance()->pause();
+    [[SKQueueDispatcher sharedDispatcher] runAsynchronouslyOnGLRenderingQueue:^{
+        CustomRenderingEngine::getInstance()->pause();
+    }];
 }
 
 
@@ -296,49 +305,67 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         return;
     }
     
-    CVReturn err;
-    CVImageBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
-    size_t width = CVPixelBufferGetWidth(pixelBuffer);
-    size_t height = CVPixelBufferGetHeight(pixelBuffer);
-    
-    if (!mVideoTextureCache)
+    if (dispatch_semaphore_wait(mVideoFrameRenderingSemaphore, DISPATCH_TIME_NOW) != 0)
     {
-        NSLog(@"No video texture cache");
         return;
     }
+    CFRetain(sampleBuffer);
     
-    if ( width != mTextureWidth || height != mTextureHeight)
-    {
-        mTextureWidth = (int)width;
-        mTextureHeight = (int)height;
-        mIsStartedCamera = YES;
-    }
-    
-    [self cleanUpTextures];
-    
-    // CVOpenGLESTextureCacheCreateTextureFromImage will create GLES texture
-    // optimally from CVImageBufferRef.
-    
-    glActiveTexture(GL_TEXTURE0);
-    err = CVOpenGLESTextureCacheCreateTextureFromImage(kCFAllocatorDefault,
-                                                       mVideoTextureCache,
-                                                       pixelBuffer,
-                                                       NULL,
-                                                       GL_TEXTURE_2D,
-                                                       GL_RGBA,
-                                                       mTextureWidth,
-                                                       mTextureHeight,
-                                                       GL_BGRA,
-                                                       GL_UNSIGNED_BYTE,
-                                                       0,
-                                                       &mCameraTexture);
-    if (err)
-    {
-        NSLog(@"Error at CVOpenGLESTextureCacheCreateTextureFromImage %d", err);
-    }
-    
-    glBindTexture(CVOpenGLESTextureGetTarget(mCameraTexture), CVOpenGLESTextureGetName(mCameraTexture));
-    mCameraTextureHandle = CVOpenGLESTextureGetName(mCameraTexture);
+    [[SKQueueDispatcher sharedDispatcher] runAsynchronouslyOnGLRenderingQueue:^{
+//        [EAGLContext setCurrentContext:mContext];
+        
+        CVReturn err;
+        CVImageBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+        size_t width = CVPixelBufferGetWidth(pixelBuffer);
+        size_t height = CVPixelBufferGetHeight(pixelBuffer);
+        
+        if (!mVideoTextureCache)
+        {
+            NSLog(@"No video texture cache");
+            return;
+        }
+        
+        if ( width != mTextureWidth || height != mTextureHeight)
+        {
+            mTextureWidth = (int)width;
+            mTextureHeight = (int)height;
+            mIsStartedCamera = YES;
+        }
+        
+//        [self cleanUpTextures];
+        
+        // CVOpenGLESTextureCacheCreateTextureFromImage will create GLES texture
+        // optimally from CVImageBufferRef.
+        
+//        glActiveTexture(GL_TEXTURE4);
+        err = CVOpenGLESTextureCacheCreateTextureFromImage(kCFAllocatorDefault,
+                                                           mVideoTextureCache,
+                                                           pixelBuffer,
+                                                           NULL,
+                                                           GL_TEXTURE_2D,
+                                                           GL_RGBA,
+                                                           mTextureWidth,
+                                                           mTextureHeight,
+                                                           GL_BGRA,
+                                                           GL_UNSIGNED_BYTE,
+                                                           0,
+                                                           &mCameraTexture);
+        if (err)
+        {
+            NSLog(@"Error at CVOpenGLESTextureCacheCreateTextureFromImage %d", err);
+        }
+        
+        glActiveTexture(CVOpenGLESTextureGetName(mCameraTexture));
+        glBindTexture(CVOpenGLESTextureGetTarget(mCameraTexture), CVOpenGLESTextureGetName(mCameraTexture));
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        mCameraTextureHandle = CVOpenGLESTextureGetName(mCameraTexture);
+        
+        CFRelease(sampleBuffer);
+        dispatch_semaphore_signal(mVideoFrameRenderingSemaphore);
+        
+        [self cleanUpTextures];
+    }];
 }
 
 
